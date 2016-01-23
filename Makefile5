@@ -1,0 +1,10 @@
+obj-m += modular.o
+modular-objs := hello_world_5_init.o hello_world_5_exit.o
+
+KERNEL_DIR = /usr/src/linux-headers-$(shell uname -r)
+
+all:
+$(MAKE) -C $(KERNEL_DIR) SUBDIRS=$(PWD) modules
+
+clean:
+rm -rf *.o *.ko *.mod *.symvers *.order
